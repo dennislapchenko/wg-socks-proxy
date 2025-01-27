@@ -3,6 +3,7 @@ version: '3.8'
 services:
   wg0:
     image: dennislapchenko/wg-socks-proxy:1
+    restart: unless-stopped
     cap_add:
       - NET_ADMIN
     devices:
@@ -11,10 +12,10 @@ services:
       - "1081:1080"
     volumes:
       - ./configs/wg0.conf:/etc/wireguard/wg0.conf:ro
-    restart: unless-stopped
 
   wg1:
     image: dennislapchenko/wg-socks-proxy:1
+    restart: unless-stopped
     cap_add:
       - NET_ADMIN
     devices:
@@ -23,4 +24,3 @@ services:
       - "1082:1080"
     volumes:
       - ./configs/wg1.conf:/etc/wireguard/wg0.conf:ro
-    restart: unless-stopped

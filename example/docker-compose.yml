@@ -1,25 +1,23 @@
 version: '3.8'
 
+x-wg-proxy: &wg-proxy
+  image: dennislapchenko/wg-socks-proxy:1
+  restart: unless-stopped
+  cap_add:
+    - NET_ADMIN
+  devices:
+    - /dev/net/tun
+
 services:
   wg0:
-    image: dennislapchenko/wg-socks-proxy:1
-    restart: unless-stopped
-    cap_add:
-      - NET_ADMIN
-    devices:
-      - /dev/net/tun
+    <<: *wg-proxy
     ports:
       - "1081:1080"
     volumes:
       - ./configs/wg0.conf:/etc/wireguard/wg0.conf:ro
 
   wg1:
-    image: dennislapchenko/wg-socks-proxy:1
-    restart: unless-stopped
-    cap_add:
-      - NET_ADMIN
-    devices:
-      - /dev/net/tun
+    <<: *wg-proxy
     ports:
       - "1082:1080"
     volumes:

@@ -6,7 +6,6 @@
 
 - Note that wireguard configs MUST have `DNS` field. Otherwise this did not work and I am yet to spend more time investigating
 
-
 ## Running
 
 1. Copy over [example/](example/) folder
@@ -18,3 +17,7 @@
   - set correct conf to mount
 4. `docker-compose up -d`
 5. verify: `curl --socks5-hostname 127.0.0.1:1081 https://ifconfig.co`
+
+## Known issues
+
+- Currently the only public image on dockerhub is for `arm64` architecture. So if you're on other architectures - just build the image yourself.

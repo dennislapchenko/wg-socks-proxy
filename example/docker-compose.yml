@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 x-wg-proxy: &wg-proxy
   image: dennislapchenko/wg-socks-proxy:1
